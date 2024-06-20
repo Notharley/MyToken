@@ -86,10 +86,12 @@ Click the "Compile MyToken.sol" button.
 Click on the "Deploy & Run Transactions" tab (looks like a "rocket" in the left sidebar).
 Ensure the "Environment" is set to "JavaScript VM (London)" for local testing.
 Click the "Deploy" button.
+
 7.Interact with the Contract:
 
 After deploying, your contract will appear under "Deployed Contracts" in the same tab.
 You can expand it to see the available functions and variables.
+
 8.Test the Contract:
 
 Check Initial State:
@@ -99,6 +101,7 @@ Mint Tokens:
 
 9.Use the mint function.
 The mint function allows creating new tokens by increasing the total supply and the recipient's balance. An event is emitted to log this action.
+   
     function mint(address recipient, uint256 amount) public {
         require(amount > 0, "Mint amount must be greater than zero");
         totalTokens += amount;
@@ -108,6 +111,7 @@ The mint function allows creating new tokens by increasing the total supply and 
 
 10.Use the burn function.
 The burn function allows destroying tokens by decreasing the total supply and the holder's balance, ensuring the holder has sufficient tokens. An event is emitted to log this action.
+    
     function burn(address holder, uint256 amount) public {
         require(amount > 0, "Burn amount must be greater than zero");
         require(accountBalances[holder] >= amount, "Insufficient balance to burn");
