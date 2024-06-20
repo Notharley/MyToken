@@ -98,12 +98,24 @@ Click on balances and enter your address to see the initial balance (should be 0
 Mint Tokens:
 
 9.Use the mint function.
-Enter your address (you can copy it from the "Account" dropdown in Remix) and a value (e.g., 100).
-Click the "transact" button.
+The mint function allows creating new tokens by increasing the total supply and the recipient's balance. An event is emitted to log this action.
+    function mint(address recipient, uint256 amount) public {
+        require(amount > 0, "Mint amount must be greater than zero");
+        totalTokens += amount;
+        accountBalances[recipient] += amount;
+        emit TokenTransfer(address(0), recipient, amount);
+    }
 
-```
-code blocks for commands
-```
+10.Use the burn function.
+The burn function allows destroying tokens by decreasing the total supply and the holder's balance, ensuring the holder has sufficient tokens. An event is emitted to log this action.
+    function burn(address holder, uint256 amount) public {
+        require(amount > 0, "Burn amount must be greater than zero");
+        require(accountBalances[holder] >= amount, "Insufficient balance to burn");
+        totalTokens -= amount;
+        accountBalances[holder] -= amount;
+        emit TokenTransfer(holder, address(0), amount);
+    }
+
 
 ## Help
 
