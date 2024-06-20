@@ -121,6 +121,18 @@ The burn function allows destroying tokens by decreasing the total supply and th
     }
 
 
+## OUTPUT
+
+Upon deploying and interacting with the CustomToken contract, the following outputs can be observed:
+
+Deployment: The contract is deployed with the specified token name and symbol. Initial total supply is zero.
+
+Minting Tokens: Tokens are minted to the specified address, increasing the total supply and updating the recipient's balance.
+
+Burning Tokens: Tokens are burned from the specified address, decreasing the total supply and updating the holder's balance.
+
+Event Logs: TokenTransfer events are emitted for both minting and burning actions, providing a transparent log of these actions.
+
 ## Help
 
 Focus on coding part and syntax so that chances of error are less.
